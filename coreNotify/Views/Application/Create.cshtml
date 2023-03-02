@@ -4,10 +4,14 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Application</h4>
-<hr />
+<div class="row">
+    <div>
+        <a asp-action="Index" class="btn btn-primary">
+            <span class="fas fa-arrow-left"></span>
+        </a>
+    </div>
+    <h1 class="mb-4">Create App</h1>
+</div>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -27,9 +31,5 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 

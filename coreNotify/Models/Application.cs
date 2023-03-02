@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace coreNotify.Models
 {
@@ -7,8 +8,10 @@ namespace coreNotify.Models
         [Key]
         public int AppId { get; set; }
         [Required]
+        [DisplayName("Internal Name")]
         public string AppName { get; set; }
         [Required]
+        [DisplayName("Displayed Name")]
         public string DisplayName { get; set; }
     }
 }

@@ -3,12 +3,15 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="row">
+    <h1 class="mb-4">Apps</h1>
+    <div class="ml-auto">
+        <a asp-action="Create" class="btn btn-primary text-right">
+            <span class="mr-1"><span class="fas fa-add"></span></span>
+            Create
+        </a>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -24,16 +27,20 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td class="mt-4">
                 @Html.DisplayFor(modelItem => item.AppName)
             </td>
-            <td>
+                <td class="mt-4">
                 @Html.DisplayFor(modelItem => item.DisplayName)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.AppId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AppId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AppId">Delete</a>
+                <td class="col-12 col-md-6 mt-4 mt-md-0 text-md-right">
+
+                    <a asp-action="Edit" asp-route-id="@item.AppId" class="btn btn-primary">
+                        <span class="mr-1"><span class="fas fa-pen-nib"></span></span>Edit
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.AppId"class="btn btn-primary">
+                        <span class="mr-1"><span class="fas fa-trash"></span></span>Delete
+                    </a>
             </td>
         </tr>
 }

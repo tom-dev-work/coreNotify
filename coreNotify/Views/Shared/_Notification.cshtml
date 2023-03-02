@@ -1,10 +1,26 @@
 ﻿@if (TempData["messageState"] != null)
-{
-    <div class="alert alert-success alert-dismissible shadow-soft fade show" role="alert">
-        <span class="alert-inner--icon"><span class="far fa-thumbs-up"></span></span>
-        <span class="alert-inner--text">@TempData["messageState"]</span>
-        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
+{   
+    <div class="alert-container">
+        <div class="alert mb-2 alert-success alert-dismissible shadow-soft fade" role="alert">
+            <span class="alert-inner--icon"><span class="far fa-thumbs-up"></span></span>
+            <span class="alert-inner--text">@TempData["messageState"]</span>
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".alert").forEach(alert => {
+                alert.classList.add("show");
+                setTimeout(() => {
+                    alert.classList.add("fadeout");
+                    setTimeout(() => {
+                        alert.remove()
+                    }, "1000")
+                }, "5000")
+                
+            })
+        });
+    </script>
 }
