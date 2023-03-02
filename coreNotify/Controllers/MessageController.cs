@@ -97,6 +97,7 @@ namespace coreNotify.Controllers
             {
                 return NotFound();
             }
+            ViewBag.message = message;
             return View(message);
         }
         // DELETE
