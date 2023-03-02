@@ -88,7 +88,7 @@ namespace coreNotify.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AppName,DisplayName")] Application application)
+        public async Task<IActionResult> Edit(int id, [Bind("AppId,AppName,DisplayName")] Application application)
         {
             if (id != application.AppId)
             {
