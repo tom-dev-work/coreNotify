@@ -12,37 +12,35 @@
         </a>
     </div>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AppName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DisplayName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td class="mt-4">
-                @Html.DisplayFor(modelItem => item.AppName)
-            </td>
-                <td class="mt-4">
-                @Html.DisplayFor(modelItem => item.DisplayName)
-            </td>
-                <td class="col-12 col-md-6 mt-4 mt-md-0 text-md-right">
+            <div class="card bg-primary shadow-soft border-light mb-4">
+                <div class="card-body px-4 py-4 text-center text-md-left">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2>@Html.DisplayNameFor(model => model.DisplayName): <strong>@Html.DisplayFor(modelItem => item.DisplayName)</strong></h2>
+                            <p>@Html.DisplayNameFor(model => model.AppName):<strong>@Html.DisplayFor(modelItem => item.AppName)</strong></p>
+                            <a asp-action="Messages" asp-route-id="@item.AppId" class="btn btn-primary">
+                                <span class="mr-2"><span class="fas fa-message"></span></span>View Messages
+                            </a>
+                        </div>
+                        <div class="col-md-4 mt-4 mt-md-0 text-md-right">
 
-                    <a asp-action="Edit" asp-route-id="@item.AppId" class="btn btn-primary">
-                        <span class="mr-1"><span class="fas fa-pen-nib"></span></span>Edit
-                    </a>
-                    <a asp-action="Delete" asp-route-id="@item.AppId"class="btn btn-primary">
-                        <span class="mr-1"><span class="fas fa-trash"></span></span>Delete
-                    </a>
-            </td>
-        </tr>
+                            <a asp-action="Edit" asp-route-id="@item.AppId" class="btn btn-primary">
+                                <span class="mr-1"><span class="fas fa-pen-nib"></span></span>Edit
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.AppId" class="btn btn-primary">
+                                <span class="mr-1"><span class="fas fa-trash"></span></span>Delete
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+                
+       
+
+
+
 }
-    </tbody>
-</table>
+
+

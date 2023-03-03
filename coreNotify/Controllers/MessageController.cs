@@ -51,8 +51,12 @@ namespace coreNotify.Controllers
             return View(shortened);
         }
         // GET
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            // if AppId is not null select the App by default here
+
+            //
+
             List<Application> appList = _db.Application.ToList();
             ViewBag.appList = new SelectList(appList, "AppId", "DisplayName");
             return View();
