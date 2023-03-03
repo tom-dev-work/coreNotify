@@ -17,8 +17,38 @@ namespace coreNotify.Controllers
         public IActionResult Index()
         {
             IEnumerable<Message> messages = _db.Messages;
-            List<Application> appList = _db.Application.ToList();
-            return View(messages);
+            List<Message> shortened = new();
+            foreach(Message message in messages) {
+                const int MaxLength = 100;
+                List<char> truncated = new();
+                int length = message.Content.Length;
+                if (message.Content.Length > MaxLength)
+                {
+                    length = MaxLength;
+                }
+                char[] explode = message.Content.ToCharArray();
+                for (int i = 0; i < length; i++)
+                {
+                    truncated.Add(explode[i]);
+                    // add trailing dots to truncated string
+                    if (i == MaxLength - 1)
+                    {
+                        truncated.Add('.');
+                        truncated.Add('.');
+                        truncated.Add('.');
+                    }
+                }
+                string content = new(truncated.ToArray());
+                var msg = new Message
+                {
+                    Id = message.Id,
+                    Title = message.Title,
+                    AppId = message.AppId,
+                    Content = content
+                    };
+                shortened.Add(msg);
+            }
+            return View(shortened);
         }
         // GET
         public IActionResult Create()

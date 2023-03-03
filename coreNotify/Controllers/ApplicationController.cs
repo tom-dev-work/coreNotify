@@ -27,8 +27,8 @@ namespace coreNotify.Controllers
                           Problem("Entity set 'ApplicationDbContext.Application'  is null.");
         }
 
-        // GET: Application/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Application/Messages/5
+        public async Task<IActionResult> Messages(int? id)
         {
             if (id == null || _context.Application == null)
             {
