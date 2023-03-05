@@ -51,14 +51,19 @@ namespace coreNotify.Controllers
             return View(shortened);
         }
         // GET
-        public IActionResult Create(int? id)
+        public IActionResult Create(int? Appid)
         {
-            // if AppId is not null select the App by default here
-
-            //
-
+            int AppId = 1;
+            if (Appid != null)
+            {
+                var app = _db.Application.Find(Appid);
+                if (app != null)
+                {
+                    AppId = (int)Appid;
+                }
+            }
             List<Application> appList = _db.Application.ToList();
-            ViewBag.appList = new SelectList(appList, "AppId", "DisplayName");
+            ViewBag.appList = new SelectList(appList, "AppId", "DisplayName", AppId);
             return View();
         }
         // POST

@@ -7,7 +7,7 @@ namespace coreNotify.Models
     public class Message
     {
         [Key]
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         [DisplayName("Message Content")]

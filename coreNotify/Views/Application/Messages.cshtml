@@ -2,12 +2,13 @@
 
 @{
     ViewData["Title"] = "Index";
+    ViewBag.AppId = ViewBag.AppId;
 }
 <partial name="_Notification" />
 <div class="row">
     <h1 class="mb-4">@ViewBag.Application: Messages</h1>
     <div class="ml-auto">
-    <a asp-controller="Message" asp-action="Create" class="btn btn-primary text-right">
+        <a asp-controller="Message" asp-action="Create"  class="btn btn-primary text-right">
         <span class="mr-1"><span class="fas fa-add"></span></span>
         Create Message
     </a>

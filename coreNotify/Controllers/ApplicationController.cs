@@ -42,6 +42,7 @@ namespace coreNotify.Controllers
                 return NotFound();
             }
             ViewBag.Application = application.DisplayName;
+            ViewBag.AppId = application.AppId;
             IEnumerable<Message> messages = _context.Messages;
             List<Message> shortened = new();
             foreach (Message message in messages)

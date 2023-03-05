@@ -12,8 +12,8 @@ using coreNotify.Data;
 namespace coreNotify.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230301164446_Ini")]
-    partial class Ini
+    [Migration("20230303154718_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
