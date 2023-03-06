@@ -1,5 +1,7 @@
-﻿using coreNotify.Data;
+﻿using coreNotify.Core;
+using coreNotify.Data;
 using coreNotify.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -51,6 +53,7 @@ namespace coreNotify.Controllers
             return View(shortened);
         }
         // GET
+        [Authorize (Policy = Constants.Policies.RequireUser)]
         public IActionResult Create(int? Appid)
         {
             int AppId = 1;
@@ -67,6 +70,7 @@ namespace coreNotify.Controllers
             return View();
         }
         // POST
+        [Authorize(Policy = Constants.Policies.RequireUser)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Message obj)
@@ -83,6 +87,7 @@ namespace coreNotify.Controllers
             return View(obj);
         }
         // GET
+        [Authorize(Policy = Constants.Policies.RequireUser)]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0) {
@@ -107,8 +112,9 @@ namespace coreNotify.Controllers
             ViewBag.appList = bagList;
             return View(message);
         }
-        
+
         // UPDATE
+        [Authorize(Policy = Constants.Policies.RequireUser)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Message obj)
@@ -125,6 +131,7 @@ namespace coreNotify.Controllers
             return View(obj);
         }
         // GET
+        [Authorize(Policy = Constants.Policies.RequireUser)]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -140,6 +147,7 @@ namespace coreNotify.Controllers
             return View(message);
         }
         // DELETE
+        [Authorize(Policy = Constants.Policies.RequireUser)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)

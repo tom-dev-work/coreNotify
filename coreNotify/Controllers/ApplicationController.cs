@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using coreNotify.Models;
 using coreNotify.Data;
+using Microsoft.AspNetCore.Authorization;
+using coreNotify.Core;
 
 namespace coreNotify.Controllers
 {
@@ -84,6 +86,7 @@ namespace coreNotify.Controllers
         }
 
         // GET: Application/Create
+        [Authorize(Policy = Constants.Policies.RequireAdmin)]
         public IActionResult Create()
         {
             return View();
@@ -106,6 +109,7 @@ namespace coreNotify.Controllers
         }
 
         // GET: Application/Edit/5
+        [Authorize(Policy = Constants.Policies.RequireAdmin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Application == null)
@@ -124,6 +128,7 @@ namespace coreNotify.Controllers
         // POST: Application/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Policy = Constants.Policies.RequireAdmin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AppId,AppName,DisplayName")] Application application)
@@ -157,6 +162,7 @@ namespace coreNotify.Controllers
         }
 
         // GET: Application/Delete/5
+        [Authorize(Policy = Constants.Policies.RequireAdmin)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Application == null)
@@ -175,6 +181,7 @@ namespace coreNotify.Controllers
         }
 
         // POST: Application/Delete/5
+        [Authorize(Policy = Constants.Policies.RequireAdmin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
