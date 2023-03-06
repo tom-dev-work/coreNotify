@@ -1,16 +1,24 @@
-﻿@model IEnumerable<Message>
+﻿@using Microsoft.AspNetCore.Identity
+@using CoreNotify.Areas.Identity.Data
+
+@model IEnumerable<Message>
+
+@inject SignInManager<NotifyUser> SignInManager
 @{
     ViewData["Title"] = "Index";
 }
 <partial name="_Notification" />
 <div class="row">
     <h1 class="mb-4">Messages</h1>
+    @if (SignInManager.IsSignedIn(User))
+    {
     <div class="ml-auto">
     <a asp-controller="Message" asp-action="Create" class="btn btn-primary text-right">
         <span class="mr-1"><span class="fas fa-add"></span></span>
         Create Message
     </a>
     </div>
+    }
 </div>
 @foreach(var message in Model) {
     <div class="card bg-primary shadow-soft border-light mb-4">
@@ -20,14 +28,17 @@
                     <h2><strong>@message.Title</strong></h2>
                     <p>@message.Content</p>
                 </div>
-                <div class="col-md-4 mt-4 mt-md-0 text-md-right">
-                    <a asp-controller="Message" asp-action="Edit" asp-route-id="@message.Id" class="btn btn-primary">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div class="col-md-4 mt-4 mt-md-0 text-md-right">
+                        <a asp-controller="Message" asp-action="Edit" asp-route-id="@message.Id" class="btn btn-primary">
                         <span class="mr-1"><span class="fas fa-pen-nib"></span></span>Edit
                     </a>
                     <a asp-controller="Message" asp-action="Delete" asp-route-id="@message.Id" class="btn btn-primary">
                         <span class="mr-1"><span class="fas fa-trash"></span></span>Delete
                     </a>
                 </div>
+                }
             </div>
     
         </div>

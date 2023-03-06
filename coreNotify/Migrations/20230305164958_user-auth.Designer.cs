@@ -13,7 +13,7 @@ namespace coreNotify.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230305164958_user-auth")]
-    partial class userauth
+    partial class UserAuth
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

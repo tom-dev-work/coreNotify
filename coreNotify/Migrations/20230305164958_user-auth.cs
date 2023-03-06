@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace coreNotify.Migrations
 {
     /// <inheritdoc />
-    public partial class userauth : Migration
+    public partial class UserAuth : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

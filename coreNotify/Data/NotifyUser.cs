@@ -12,4 +12,7 @@ public class NotifyUser : IdentityUser
     public String FirstName { get; set; }
     public String LastName { get; set; }
 }
+public class ApplicationRole : IdentityRole
+{
 
+}
